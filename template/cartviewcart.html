@@ -1,0 +1,20 @@
+{% extends 'common.html' %}
+{% block content %}
+{% if cart %}
+        <ul>
+       <div>
+          {%for c in a%}
+                           <li>{{ item.product.name }} - {{ item.quantity }} x ${{ item.product.price }}</li>
+            {% endfor %}
+       </div>
+        </ul>
+      <p>Total: ${{ s }}</p>    {% else %}
+        <p>Your cart is empty.</p>
+    {% endif %}
+
+
+</div>
+{% endblock content %}
+{% block title %}
+ add cart
+{% endblock title %}

@@ -1,0 +1,31 @@
+{% extends 'common.html' %}
+{% block content %}
+    {%for i in y%}
+<center>
+    <div style="font-size:120%;width:100%; display:flex;justify-content:center;padding:10px 10px;border:1px solid grey;background-image: url('image-1.jpg');">
+        <div style="background-color:white; color:black;font-size:120%;">
+            <div>
+                <a href="{% url 'viewprd' i.id %}">
+                  {{ i.proname }}
+                </a>
+            </div>
+
+            <div>
+                <img src="{{ i.image.url}}" style="height:15em">
+            </div>
+            <div>
+                {{ i.price}}
+            </div>
+            <div>
+                {{ i.quantity}}
+            </div>
+        </div>
+    </div>
+</center>
+
+    {% endfor %}
+{% endblock content %}
+
+{% block title %}
+view item to add cart
+{% endblock title %}

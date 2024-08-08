@@ -1,0 +1,25 @@
+{% extends 'common.html' %}
+{% block content %}
+<div>
+    {%for i in y%}
+    <div>
+        {{ i.productname }}
+    </div>
+    <div> `
+        {{ i.price}}
+    </div>
+    <div>
+        {{i.quantity}}
+    </div>
+    <div>
+        <input type="button" value="ADD TO CART">
+
+    </div>
+    {% endfor%}
+</div>
+
+{% endblock content %}
+
+{% block title %}
+ add to cart
+{% endblock title %}

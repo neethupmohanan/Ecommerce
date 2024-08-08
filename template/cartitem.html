@@ -1,0 +1,36 @@
+{% extends 'common.html' %}
+{% block content %}
+{%for i in u %}
+<div style="font-size:20%;width:20%; display:flex;justify-content:center;background-color:#b2ad7f; color:black;font-size:120%;padding:margin-top;border:1px solid white;">
+<div>
+    <div>
+        {{ i.productsname }}
+    </div>
+    <div>
+        {{ i.price}}
+    </div>
+    <div>
+        <img src="{{ i.image.url}}" style="height:10em;">
+
+    </div>
+
+    <div>
+        {{ i.quantity}}
+
+    </div>
+    <div>
+        <a href="{% url 'delete' i.id %}">Delete
+        </a>
+
+    </div>
+</div>
+</center>
+</div>
+
+
+{% endfor %}
+    <a href="{% url 'buynow' %}">
+        <button>Continue shopping</button>
+    </a>
+{% endblock content %}
+

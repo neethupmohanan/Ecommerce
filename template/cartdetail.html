@@ -1,0 +1,18 @@
+<!-- templates/cart_detail.html -->
+{% extends 'common.html' %}
+{% block content %}
+{% for item in cart %}
+  <p>{{ item.product.productname }}: {{ item.quantity }} x {{ item.price }}</p>
+  <p>Total: {{ item.total_price }}</p>
+  <form action="{% url 'cartremove' item.product.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Remove</button>
+  </form>
+{% endfor %}
+<p>Total Price: {{ cart.get_total_price }}</p>
+
+{% endblock content %}
+
+{% block title %}
+ cart
+{% endblock title %}

@@ -1,0 +1,17 @@
+{% extends 'common.html' %}
+{% block content %}
+<div>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+         PRODUCT NAME:<input type="text" value="{{ b.proname}}" name="proname"><br>
+        PRICE<input type="text" value="{{ b.price}}" name="price"><br>
+        IMAGE<input type="file" value="{{b.image}}" name="image"><br>
+        QUANTITY:<input type="number" value="{{ b.quantity}}" name="quantity"><br>
+        <input type="submit" value="submit">
+    </form>
+</div>
+{% endblock content %}
+
+{% block title %}
+ product
+{% endblock title %}

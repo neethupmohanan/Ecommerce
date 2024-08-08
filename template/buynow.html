@@ -1,0 +1,113 @@
+{% extends 'common.html' %}
+{% block content %}
+<style>
+    .product-container {
+        display: flex;
+        justify-content: center;
+        background-color:#b2ad7f; /* White background for the product container */
+        border: 1px solid #ddd; /* Light grey border */
+        color:black; /* Dark grey text color */
+        font-size: 1.2em;
+        padding: 1em;
+        margin: 1em;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-container div {
+        margin: 0.5em;
+    }
+
+    .product-image img {
+        height: 150px;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    .address-container {
+        background-color: #b2ad7f; /* Light blue-grey background */
+        padding: 1em;
+        margin: 1em;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .address-container div {
+        margin: 0.2em 0;
+    }
+
+    .address-actions {
+        display: flex;
+        gap: 1em;
+        margin-top: 1em;
+    }
+
+    .address-actions button {
+        background-color: #b2ad6f /* Blue button background */
+        color: black;
+        padding: 0.5em 1em;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .address-actions button:hover {
+        background-color: grey; /* Darker blue on hover */
+    }
+
+    h3 {
+        margin-top: 2em;
+        color:black; /* Dark grey for the heading */
+    }
+</style>
+
+{% for i in b %}
+<div class="product-container">
+    <div>
+        <div>{{ i.productname }}</div>
+        <div>{{ i.price }}</div>
+        <div class="product-image">
+            <img src="{{ i.image.url }}" alt="{{ i.productname }}">
+        </div>
+        <div>{{ i.quantity }}</div>
+    </div>
+</div>
+{% endfor %}
+
+<h3>ADDRESS
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+        </svg>
+    </h3>
+<div class="address-container" style="color:black;">
+    {% if d %}
+        {% for i in d %}
+        <div>{{ i.housename }}</div>
+        <div>{{ i.roadname }}</div>
+        <div>{{ i.pincode }}</div>
+        <div>{{ i.city }}</div>
+        <div>{{ i.state }}</div>
+        <div>{{ i.contact }}</div>
+        {% endfor %}
+        <div class="address-actions">
+            <a href="{% url 'editaddr' %}">
+                <button>EDIT</button>
+            </a>
+            <a href="{% url 'addressdelete' %}">
+                <button>DELETE</button>
+            </a>
+            <a href="{% url 'order' %}">
+                <button>PLACE ORDER</button>
+            </a>
+        </div>
+    {% else %}
+    <div>
+        <a href="{% url 'addr' %}">
+            <button>ADD Address</button>
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends 'common.html' %}
+{% block content %}
+<center >
+    <div style="font-size:120%;width:100%; display:flex;justify-content:center;padding:margin-top;">
+        <div style="background-color:white; color:black;font-size:120%;">
+
+            <div>
+                {{ b.proname}}
+            </div>
+            <div>
+                {{ b.price}}
+            </div>
+            <div>
+                QUANTITY:<input type="number" name="quantity"><br>
+            </div>
+            <div>
+                <img src="{{ b.image.url }}" style="height:10em;">
+            </div>
+            <div>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit">
+                            add to cart
+                    </button>
+                </form>
+<!--                    <script>-->
+<!--                    function myalert()-->
+<!--                    {-->
+<!--                    alert("ITEM ADDED");-->
+<!--                    }-->
+<!--                    </script>-->
+                </div>
+        </div>
+    </div>
+</center>
+{% endblock content %}
+{% block title %}
+ add cart
+{% endblock title %}
